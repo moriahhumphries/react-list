@@ -1,12 +1,19 @@
-import React from 'react';
-
+import React, {Component} from 'react';
 import './App.css';
 
-function App() {
-  return (
-
-        <h1>React To-do List</h1>
-  );
+class App extends React.Component {
+    render() {
+        return (
+            <div>
+                <h1>React To-do List</h1>
+                <ul>
+                    <li>Cats</li>
+                    <li>Cats</li>
+                    <li>CATS</li>
+                </ul>
+            </div>
+        );
+    }
 }
 
 export default App;
