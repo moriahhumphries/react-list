@@ -23,13 +23,17 @@ class App extends Component {
 
         const allTodo = this.state.todos.map(item => <TodoList key={item.id} list={item}/>)
 
-
+        const handleEvent = () => {
+            console.log("Hovered")
+        }
 
         return (
             <div className="main-div">
                 <div className="todo-list">
                     {allTodo}
-
+                <img src="https://www.fillmurray.com/200/100" />
+                <br />
+                <button onPointerEnter={handleEvent}>Hovered!</button>
                 </div>
             </div>
 
