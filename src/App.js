@@ -14,7 +14,7 @@ class App extends Component {
             name: "Moriah",
             age: 32,
             isLoggedIn: true,
-            todos: todosData
+            todos: todosData,
         }
 
     }
