@@ -10,30 +10,32 @@ class App extends Component {
     constructor() {
         super()
         this.state = {
-            answer: "Yes",
-            name: "Moriah",
-            age: 32,
-            isLoggedIn: true,
-            todos: todosData,
+            // todos: todosData,
+            count: 0
         }
+        // Bind handlers
+        this.handleEvent = this.handleEvent.bind(this)
+    }
 
+    // allTodo = this.state.todos.map(item => <TodoList key={item.id} list={item}/>)
+
+    // Will need to bind
+    handleEvent = () => {
+        this.setState(prevState => {
+            return {
+                count: prevState.count + 1
+            }
+        })
     }
 
     render() {
 
-        const allTodo = this.state.todos.map(item => <TodoList key={item.id} list={item}/>)
-
-        const handleEvent = () => {
-            console.log("Hovered")
-        }
-
         return (
             <div className="main-div">
                 <div className="todo-list">
-                    {allTodo}
-                <img src="https://www.fillmurray.com/200/100" />
-                <br />
-                <button onPointerEnter={handleEvent}>Hovered!</button>
+                    {/*{this.allTodo}*/}
+                    <h1>{this.state.count}</h1>
+                    <button onClick={this.handleEvent}>Change Count</button>
                 </div>
             </div>
 
