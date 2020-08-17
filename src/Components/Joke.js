@@ -2,9 +2,9 @@ import React from "react";
 
 const Joke = (props) => {
     return (
-        <div style={{border: "1px solid black", marginBottom: "5px"}}>
-            <p>Question: {props.joke.question}</p>
-            <p style={{display: !props.joke.punchline && "none"}}>Punchline: {props.joke.punchline}</p>
+        <div>
+            <p style={{display: !props.question && "none", border: "1px solid black", marginBottom: "5px"}}>Question: {props.question}</p>
+            <p style={{display: !props.punchLine && "none", border: "1px solid black", marginBottom: "5px"}}>Punchline: {props.punchLine}</p>
         </div>
     )
 }

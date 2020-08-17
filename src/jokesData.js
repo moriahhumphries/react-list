@@ -10,13 +10,15 @@ const jokesData= [
         punchLine: "Punchline 2"
     },
     {
-        id: 1,
+        id: 3,
         question: "Question 3",
         punchLine: "Punchline 3"
     },
     {
-        id: 1,
+        id: 4,
         question: "Question 4",
         punchLine: "Punchline 4"
-    },
+    }
 ]
+
+export default jokesData;
