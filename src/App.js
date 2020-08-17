@@ -8,12 +8,19 @@ import Clock from "./Components/Clock";
 import ContactCard from "./Components/ContactCard";
 import Joke from "./Components/Joke";
 import jokesData from "./jokesData";
+import Product from "./Components/Product";
+import productsData from "./productsData";
 
 
 class App extends Component {
     render() {
         const jokeComponents = jokesData.map(joke => <Joke key={joke.id} question=
-                      {joke.question} punchLine={joke.punchLine}/>)
+            {joke.question} punchLine={joke.punchLine}/>)
+
+        // const allProducts = productsData.map(product => <Product key={product.id} name=
+        //     {product.name} price={product.price} description={product.description} />)
+
+        const allProducts = productsData.map(item => <Product key={item.id} product={item}/>)
 
         return (
             <div className="main-div">
@@ -22,6 +29,8 @@ class App extends Component {
 
                     <MainContent/>
                     <Clock/>
+                    {allProducts}
+
                     <TodoList/>
                     <TodoList/>
                     <TodoList/>
