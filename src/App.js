@@ -13,29 +13,23 @@ class App extends Component {
             answer: "Yes",
             name: "Moriah",
             age: 32,
-            isLoggedIn: true
+            isLoggedIn: true,
+            todos: todosData
         }
 
     }
 
     render() {
 
-        const allTodo = todosData.map(item => <TodoList key={item.id} list={item}/>)
-        let loginStatus;
-        if (this.state.isLoggedIn === true) {
-            loginStatus = "In."
-        } else {
-            loginStatus = "Out."
-        }
+        const allTodo = this.state.todos.map(item => <TodoList key={item.id} list={item}/>)
+
+
 
         return (
             <div className="main-div">
                 <div className="todo-list">
-                    <h1>Is state important? {this.state.answer}</h1>
-                    <h1>{this.state.name}</h1>
-                    <h1>{this.state.age} years old</h1>
-                    <h1>You are currently logged: {loginStatus}</h1>
                     {allTodo}
+
                 </div>
             </div>
 
@@ -46,6 +40,18 @@ class App extends Component {
 
 export default App;
 
+
+// let loginStatus;
+// if (this.state.isLoggedIn === true) {
+//     loginStatus = "In."
+// } else {
+//     loginStatus = "Out."
+// }
+//
+// <h1>Is state important? {this.state.answer}</h1>
+// <h1>{this.state.name}</h1>
+// <h1>{this.state.age} years old</h1>
+// <h1>You are currently logged: {loginStatus}</h1>
 // const jokeComponents = jokesData.map(joke => <Joke key={joke.id} question=
 //     {joke.question} punchLine={joke.punchLine}/>)
 //
