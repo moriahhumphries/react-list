@@ -10,6 +10,7 @@ import Joke from "./Components/Joke";
 import jokesData from "./jokesData";
 import Product from "./Components/Product";
 import productsData from "./productsData";
+import todosData from "./todosData";
 
 
 class App extends Component {
@@ -22,6 +23,8 @@ class App extends Component {
 
         const allProducts = productsData.map(item => <Product key={item.id} product={item}/>)
 
+        const allTodo = todosData.map(item => <TodoList key={item.id} list={item}/>)
+
         return (
             <div className="main-div">
                 <Navbar/>
@@ -30,11 +33,8 @@ class App extends Component {
                     <MainContent/>
                     <Clock/>
                     {allProducts}
-
-                    <TodoList/>
-                    <TodoList/>
-                    <TodoList/>
-                    <TodoList/>
+                    {allTodo}
+                    {/*<TodoList/>*/}
                     <div className="contacts">
                         {/*<ContactCard name="Name"*/}
                         {/*             imgUrl="http://placekitten.com/300/300"*/}

@@ -1,10 +1,10 @@
 import React from "react";
 
-const TodoList = () => {
+const TodoList = (props) => {
     return (
-        <div className="todo-item">
-            <input type="checkbox"/>
-            <p>Text</p>
+        <div>
+            <input type="checkbox" checked={props.list.completed}/>
+            <p>{props.list.text}</p>
         </div>
     )
 }
