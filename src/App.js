@@ -4,6 +4,7 @@ import Checkboxes from "./Components/Checkboxes";
 import Navbar from "./Components/Navbar";
 import MainContent from "./Components/MainContent";
 import FooterSection from "./Components/FooterSection";
+import Clock from "./Components/Clock";
 
 
 class App extends Component {
@@ -13,6 +14,7 @@ class App extends Component {
             <div>
                 <Navbar/>
                 <MainContent/>
+                <Clock />
                 <div>
                     <Checkboxes/>
                 </div>
