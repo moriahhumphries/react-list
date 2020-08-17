@@ -10,7 +10,10 @@ class App extends Component {
     constructor() {
         super()
         this.state = {
-            answer: "Yes"
+            answer: "Yes",
+            name: "Moriah",
+            age: 32,
+            isLoggedIn: true
         }
 
     }
@@ -18,13 +21,21 @@ class App extends Component {
     render() {
 
         const allTodo = todosData.map(item => <TodoList key={item.id} list={item}/>)
+        let loginStatus;
+        if (this.state.isLoggedIn === true) {
+            loginStatus = "In."
+        } else {
+            loginStatus = "Out."
+        }
 
         return (
             <div className="main-div">
                 <div className="todo-list">
                     <h1>Is state important? {this.state.answer}</h1>
+                    <h1>{this.state.name}</h1>
+                    <h1>{this.state.age} years old</h1>
+                    <h1>You are currently logged: {loginStatus}</h1>
                     {allTodo}
-
                 </div>
             </div>
 
