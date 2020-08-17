@@ -6,15 +6,23 @@ import todosData from "./todosData";
 
 
 class App extends Component {
+    // built in method, initializes values, requires call to Super
+    constructor() {
+        super()
+        this.state = {
+            answer: "Yes"
+        }
+
+    }
+
     render() {
 
         const allTodo = todosData.map(item => <TodoList key={item.id} list={item}/>)
 
         return (
             <div className="main-div">
-                <Navbar/>
                 <div className="todo-list">
-
+                    <h1>Is state important? {this.state.answer}</h1>
                     {allTodo}
 
                 </div>
