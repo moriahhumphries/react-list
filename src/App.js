@@ -7,9 +7,13 @@ class App extends Component {
         this.state = {
             firstName: "",
             lastName: "",
-            isFriendly: true,
+            age: 0,
             gender: "",
-            favColor: "blue"
+            destination: "",
+            isVegan: false,
+            isKosher: false,
+            isGlutenFree: false
+
         }
         this.handleChange = this.handleChange.bind(this)
     }
@@ -17,7 +21,8 @@ class App extends Component {
     handleChange(event) {
         const {name, value, type, checked} = event.target
         // Can wrap string in square brackets
-        type === "checkbox" ? this.setState({[name]: checked}) : this.setState({[name]: value})
+        type === "checkbox" ?
+            this.setState({[name]: checked}) : this.setState({[name]: value})
 
 
     }
@@ -29,38 +34,33 @@ class App extends Component {
                 <form>
                     <input type="text"
                            value={this.state.firstName}
-                           name="firstName" placeholder="First Name"
+                           name="firstName"
+                           placeholder="First Name"
                            onChange={this.handleChange}/>
-                    <br/>
                     <br/>
                     <input type="text"
                            value={this.state.lastName}
                            name="lastName"
-                           placeholder="First Name"
+                           placeholder="Last Name"
+                           onChange={this.handleChange}/>
+                    <br/>
+                    <input type="text"
+                           value={this.state.age}
+                           name="age"
+                           placeholder="Age"
                            onChange={this.handleChange}/>
                     <br/>
                     <br/>
-                    <textarea value={"Default Value"}
-                              onChange={this.handleChange}/>
                     <br/>
                     <br/>
                     <label>
-                        <input type="checkbox"
-                               name="isFriendly"
-                               checked={this.state.isFriendly}
+                        <input type="radio"
+                               name="gender"
+                               value="male"
+                               checked={this.state.gender === "male"}
                                onChange={this.handleChange}
-                        /> Is Friendly?
+                        /> Male
                     </label>
-                    <br/>
-                    <br/> <label>
-                    <input type="radio"
-                           name="gender"
-                           value="male"
-                           checked={this.state.gender === "male"}
-                           onChange={this.handleChange}
-                    /> Male
-                </label>
-                    <br/>
                     <br/>
                     <label>
                         <input type="radio"
@@ -72,24 +72,52 @@ class App extends Component {
                     </label>
                     <br/>
                     <br/>
-                    <label>Favorite Color: </label>
-                        <select value={this.state.favColor}
-                                onChange={this.handleChange}
-                                name="favColor">
-                            <option value="blue">Blue</option>
-                            <option value="green">Green</option>
-                            <option value="red">Red</option>
-                        </select>
+                    <label>Destination: </label>
+                    <select value={this.state.destination}
+                            onChange={this.handleChange}
+                            name="destination">
+                        <option value="">Select</option>
+                        <option value="utah">Utah</option>
+                        <option value="washington">Washington</option>
+                        <option value="california">California</option>
+                    </select>
+                    <br/>
+                    <br/>
+                    <label>Dietary Restrictions:</label>
+                    <input type="checkbox"
+                           name="isVegan"
+                           onChange={this.handleChange}
+                           checked={this.state.isVegan}
+                    />Vegan?
 
-                    <br />
-                    <br />
+                    <input type="checkbox"
+                           name="isKosher"
+                           onChange={this.handleChange}
+                           checked={this.state.isKosher}
+                    />Kosher?
 
-                    <h1>{this.state.firstName} {this.state.lastName}</h1>
-                    <h2>You are a {this.state.gender}</h2>
-                    <h2>Your favorite color is {this.state.favColor}</h2>
-                    <br />
+                    <input type="checkbox"
+                           name="isGlutenFree"
+                           onChange={this.handleChange}
+                           checked={this.state.isGlutenFree}
+                    />Gluten Free?
+                    <br/>
+                    <br/>
                     <button>Submit</button>
                 </form>
+
+                <hr/>
+                <h1>Entered information: </h1>
+                <h2>Your name: {this.state.firstName} {this.state.lastName}</h2>
+                <h2>Your age: {this.state.age}</h2>
+                <h2>Your gender: {this.state.gender}</h2>
+                <h2>Your destination: {this.state.destination}</h2>
+                <h2>Your dietary restrictions:</h2>
+                <p>Vegan: {this.state.isVegan ? "Yes" : "No"}</p>
+                <p>Kosher: {this.state.isKosher ? "Yes" : "No"}</p>
+                <p>Gluten Free: {this.state.isGlutenFree ? "Yes" : "No"}</p>
+
+
             </div>
         )
     }
@@ -97,7 +125,70 @@ class App extends Component {
 
 export default App
 
+// {/*<form>*/}
+//                 {/*    <input type="text"*/}
+//                 {/*           value={this.state.firstName}*/}
+//                 {/*           name="firstName" placeholder="First Name"*/}
+//                 {/*           onChange={this.handleChange}/>*/}
+//                 {/*    <br/>*/}
+//                 {/*    <br/>*/}
+//                 {/*    <input type="text"*/}
+//                 {/*           value={this.state.lastName}*/}
+//                 {/*           name="lastName"*/}
+//                 {/*           placeholder="First Name"*/}
+//                 {/*           onChange={this.handleChange}/>*/}
+//                 {/*    <br/>*/}
+//                 {/*    <br/>*/}
+//                 {/*    <textarea value={"Default Value"}*/}
+//                 {/*              onChange={this.handleChange}/>*/}
+//                 {/*    <br/>*/}
+//                 {/*    <br/>*/}
+//                 {/*    <label>*/}
+//                 {/*        <input type="checkbox"*/}
+//                 {/*               name="isFriendly"*/}
+//                 {/*               checked={this.state.isFriendly}*/}
+//                 {/*               onChange={this.handleChange}*/}
+//                 {/*        /> Is Friendly?*/}
+//                 {/*    </label>*/}
+//                 {/*    <br/>*/}
+//                 {/*    <br/> <label>*/}
+//                 {/*    <input type="radio"*/}
+//                 {/*           name="gender"*/}
+//                 {/*           value="male"*/}
+//                 {/*           checked={this.state.gender === "male"}*/}
+//                 {/*           onChange={this.handleChange}*/}
+//                 {/*    /> Male*/}
+//                 {/*</label>*/}
+//                 {/*    <br/>*/}
+//                 {/*    <br/>*/}
+//                 {/*    <label>*/}
+//                 {/*        <input type="radio"*/}
+//                 {/*               name="gender"*/}
+//                 {/*               value="female"*/}
+//                 {/*               checked={this.state.gender === "female"}*/}
+//                 {/*               onChange={this.handleChange}*/}
+//                 {/*        /> Female*/}
+//                 {/*    </label>*/}
+//                 {/*    <br/>*/}
+//                 {/*    <br/>*/}
+//                 {/*    <label>Favorite Color: </label>*/}
+//                 {/*        <select value={this.state.favColor}*/}
+//                 {/*                onChange={this.handleChange}*/}
+//                 {/*                name="favColor">*/}
+//                 {/*            <option value="blue">Blue</option>*/}
+//                 {/*            <option value="green">Green</option>*/}
+//                 {/*            <option value="red">Red</option>*/}
+//                 {/*        </select>*/}
 //
+//                 {/*    <br />*/}
+//                 {/*    <br />*/}
+//
+//                 {/*    <h1>{this.state.firstName} {this.state.lastName}</h1>*/}
+//                 {/*    <h2>You are a {this.state.gender}</h2>*/}
+//                 {/*    <h2>Your favorite color is {this.state.favColor}</h2>*/}
+//                 {/*    <br />*/}
+//                 {/*    <button>Submit</button>*/}
+//                 {/*</form>
 // constructor() {
 //     super()
 //     this.state = {
