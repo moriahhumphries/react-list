@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
+import Form from './Components/Form'
 
 class App extends Component {
     constructor() {
@@ -31,91 +32,11 @@ class App extends Component {
 
         return (
             <div>
-                <form>
-                    <input type="text"
-                           value={this.state.firstName}
-                           name="firstName"
-                           placeholder="First Name"
-                           onChange={this.handleChange}/>
-                    <br/>
-                    <input type="text"
-                           value={this.state.lastName}
-                           name="lastName"
-                           placeholder="Last Name"
-                           onChange={this.handleChange}/>
-                    <br/>
-                    <input type="text"
-                           value={this.state.age}
-                           name="age"
-                           placeholder="Age"
-                           onChange={this.handleChange}/>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <br/>
-                    <label>
-                        <input type="radio"
-                               name="gender"
-                               value="male"
-                               checked={this.state.gender === "male"}
-                               onChange={this.handleChange}
-                        /> Male
-                    </label>
-                    <br/>
-                    <label>
-                        <input type="radio"
-                               name="gender"
-                               value="female"
-                               checked={this.state.gender === "female"}
-                               onChange={this.handleChange}
-                        /> Female
-                    </label>
-                    <br/>
-                    <br/>
-                    <label>Destination: </label>
-                    <select value={this.state.destination}
-                            onChange={this.handleChange}
-                            name="destination">
-                        <option value="">Select</option>
-                        <option value="utah">Utah</option>
-                        <option value="washington">Washington</option>
-                        <option value="california">California</option>
-                    </select>
-                    <br/>
-                    <br/>
-                    <label>Dietary Restrictions:</label>
-                    <input type="checkbox"
-                           name="isVegan"
-                           onChange={this.handleChange}
-                           checked={this.state.isVegan}
-                    />Vegan?
+            <Form
+            handleChange={this.handleChange}
+            data={this.state}
 
-                    <input type="checkbox"
-                           name="isKosher"
-                           onChange={this.handleChange}
-                           checked={this.state.isKosher}
-                    />Kosher?
-
-                    <input type="checkbox"
-                           name="isGlutenFree"
-                           onChange={this.handleChange}
-                           checked={this.state.isGlutenFree}
-                    />Gluten Free?
-                    <br/>
-                    <br/>
-                    <button>Submit</button>
-                </form>
-
-                <hr/>
-                <h1>Entered information: </h1>
-                <h2>Your name: {this.state.firstName} {this.state.lastName}</h2>
-                <h2>Your age: {this.state.age}</h2>
-                <h2>Your gender: {this.state.gender}</h2>
-                <h2>Your destination: {this.state.destination}</h2>
-                <h2>Your dietary restrictions:</h2>
-                <p>Vegan: {this.state.isVegan ? "Yes" : "No"}</p>
-                <p>Kosher: {this.state.isKosher ? "Yes" : "No"}</p>
-                <p>Gluten Free: {this.state.isGlutenFree ? "Yes" : "No"}</p>
+            />
 
 
             </div>
