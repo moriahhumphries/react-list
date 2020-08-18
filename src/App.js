@@ -5,44 +5,41 @@ import Navbar from "./Components/Navbar";
 import todosData from "./todosData";
 
 
-class App extends Component {
-    // built in method, initializes values, requires call to Super
+class App extends React.Component {
     constructor() {
         super()
         this.state = {
-            isLoggedIn: false
+            todos: todosData
         }
-        // Bind handler
-        this.handleClick = this.handleClick.bind(this)
+        this.handleChange = this.handleChange.bind(this)
     }
 
-
-// Will need to bind
-    handleClick() {
+    handleChange(id) {
         this.setState(prevState => {
+            const updatedTodos = prevState.todos.map(todo => {
+                if (todo.id === id) {
+                    todo.completed = !todo.completed
+                }
+                return todo
+            })
             return {
-                isLoggedIn: !prevState.isLoggedIn
+                todos: updatedTodos
             }
         })
     }
 
     render() {
-        let buttonText = this.state.isLoggedIn ? "Log out" : "Log in";
-        let displayText = this.state.isLoggedIn ? "Logged in" : "Logged out"
+        const todoItems = this.state.todos.map(item => <TodoList key={item.id} item={item} handleChange={this.handleChange}/>)
 
         return (
-            <div className="main-div">
-                <div className="todo-list">
-                    <h1>{displayText}</h1>
-                    <button onClick={this.handleClick}>{buttonText}</button>
-                </div>
+            <div className="todo-list">
+                {todoItems}
             </div>
-        );
-    };
+        )
+    }
 }
 
-
-export default App;
+export default App
 
 //
 // constructor() {
