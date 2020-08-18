@@ -35,10 +35,7 @@ class App extends Component {
             <Form
             handleChange={this.handleChange}
             data={this.state}
-
             />
-
-
             </div>
         )
     }
