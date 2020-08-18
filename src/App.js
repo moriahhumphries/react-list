@@ -10,36 +10,31 @@ class App extends Component {
     constructor() {
         super()
         this.state = {
-            todos: todosData,
+            isLoggedIn: false
         }
-
-        // Bind handlers
-        this.handleEvent = this.handleEvent.bind(this)
+        // Bind handler
+        this.handleClick = this.handleClick.bind(this)
     }
 
-    // Will need to bind
-    handleEvent (id) {
-        console.log("Clicked", id)
+
+// Will need to bind
+    handleClick() {
         this.setState(prevState => {
-            const updatedTodos = prevState.todos.map(todo => {
-                if (todo.id === id) {
-                    todo.completed = !todo.completed
-                }
-                return todo
-            })
             return {
-                todos: updatedTodos
+                isLoggedIn: !prevState.isLoggedIn
             }
         })
     }
 
     render() {
+        let buttonText = this.state.isLoggedIn ? "Log out" : "Log in";
+        let displayText = this.state.isLoggedIn ? "Logged in" : "Logged out"
 
-        const allTodo = this.state.todos.map(list => <TodoList key={list.id} list={list} handleEvent={this.handleEvent}/>)
         return (
             <div className="main-div">
                 <div className="todo-list">
-                    {allTodo}
+                    <h1>{displayText}</h1>
+                    <button onClick={this.handleClick}>{buttonText}</button>
                 </div>
             </div>
         );
@@ -49,6 +44,45 @@ class App extends Component {
 
 export default App;
 
+//
+// constructor() {
+//     super()
+//     this.state = {
+//         todos: todosData,
+//     }
+//
+//     // Bind handlers
+//     this.handleEvent = this.handleEvent.bind(this)
+// }
+//
+// // Will need to bind
+// handleEvent (id) {
+//     console.log("Clicked", id)
+//     this.setState(prevState => {
+//         const updatedTodos = prevState.todos.map(todo => {
+//             if (todo.id === id) {
+//                 todo.completed = !todo.completed
+//             }
+//             return todo
+//         })
+//         return {
+//             todos: updatedTodos
+//         }
+//     })
+// }
+//
+// render() {
+//
+//     const allTodo = this.state.todos.map(list => <TodoList key={list.id} list={list} handleEvent={this.handleEvent}/>)
+//     return (
+//         <div className="main-div">
+//             <div className="todo-list">
+//                 {allTodo}
+//             </div>
+//         </div>
+//     );
+// };
+// }
 
 // let loginStatus;
 // if (this.state.isLoggedIn === true) {
