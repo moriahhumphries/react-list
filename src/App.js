@@ -1,38 +1,41 @@
 import React, {Component} from 'react';
 import './App.css';
-import TodoList from "./Components/TodoList";
-import Navbar from "./Components/Navbar";
-import todosData from "./todosData";
 
-
-class App extends React.Component {
+class App extends Component {
     constructor() {
         super()
         this.state = {
-            loading: false,
-            character: {}
+            firstName: "",
+            lastName: ""
         }
-        // this.handleChange = this.handleChange.bind(this)
+        this.handleChange = this.handleChange.bind(this)
     }
 
-    componentDidMount() {
-        this.setState({loading: true})
-        fetch("https://pokeapi.co/api/v2/pokemon/1")
-            .then(response => response.json())
-            .then(data => {
-                this.setState({
-                    loading: false,
-                    character: data
-                })
-            })
-    }
+    handleChange(event) {
+        const {name, value} = event.target
+        this.setState({
+            // Can wrap string in square brackets
+        [event.target.name]: event.target.value
+        })
 
+    }
 
     render() {
-        const text = this.state.loading ? "Loading..." : this.state.character.name
+
         return (
             <div>
-                <p>{text}</p>
+                <form>
+                    <input type="text"
+                           value={this.state.firstName}
+                           name="firstName" placeholder="First Name"
+                           onChange={this.handleChange}/>
+                    <input type="text"
+                           value={this.state.lastName}
+                           name="lastName"
+                           placeholder="First Name"
+                           onChange={this.handleChange}/>
+                    <h1>{this.state.firstName} {this.state.lastName}</h1>
+                </form>
             </div>
         )
     }
